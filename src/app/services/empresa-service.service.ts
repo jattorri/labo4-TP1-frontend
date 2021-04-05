@@ -8,22 +8,24 @@ import {Empresa} from "../entities/empresa"
 })
 export class EmpresaServiceService {
 
-  public empresaData:Empresa[]=[];
-  public empresaEncontrada:Empresa;
+  /*public empresasArr:Empresa[]=[];
+  public empresaEncontrada:Empresa;*/
 
   constructor(public http: HttpClient) {
-    console.log("Servicio Cargado!!!");
+    console.log("Servicio Empresa Cargado!!!");
    }
 
 
   getEmpresasFromDataBase(){
-    return this.http.get("http://localhost:9000/api/empresas").pipe(
-    map(empresaData => empresaData));
+    return this.http.get<Empresa[]>("http://localhost:9000/api/empresas");
   }
 
   getEmpresaEnBaseDatosXId(idx:string){
-    return this.http.get("http://localhost:9000/api/empresas/" + idx).pipe(
-      map<Empresa,Empresa>( empresaEncontrada => empresaEncontrada));
+    return this.http.get<Empresa>("http://localhost:9000/api/empresas/" + idx);
+    
+   
   }
+
+
   
 }

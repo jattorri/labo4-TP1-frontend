@@ -18,27 +18,31 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.servicioEmpresa.getEmpresasFromDataBase().subscribe(dataEmpresa => {
-      for(let empresa in dataEmpresa){
-        this.empresasArr.push(dataEmpresa[empresa]);
-      }
-      this.loading = false;
-
-      //TEST
-      console.log( "EMPRESAS ARR" + this.empresasArr.values.toString());
-      console.log(this.empresasArr);
-
-      for(var i in this.empresasArr)
-      { 
-      console.log(this.empresasArr[i]);  
-      }
-      //FIN TEST
-    });
+    
+    this.getEmpresas();
   }
 
   public verEmpresa(idx:string){
     console.log("ID Empresa " + idx);
     this.router.navigate(['/empresa', idx]);
+  }
+
+  public getEmpresas(): void{
+    this.servicioEmpresa.getEmpresasFromDataBase().subscribe(empresasArr => {
+
+      this.empresasArr=empresasArr
+      this.loading = false;
+  
+        //TEST
+        console.log( "EMPRESAS ARR" + this.empresasArr.values.toString());
+        console.log(this.empresasArr);
+  
+        for(var i in this.empresasArr)
+        { 
+        console.log(this.empresasArr[i]);  
+        }
+        //FIN TEST
+      });
   }
 
 }

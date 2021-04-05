@@ -1,16 +1,14 @@
 <table width="50%" align ="center">
-    <tr  *ngFor="let empresa of empresasArr" >
+    <tr  *ngFor= "let empresa of empresasArr" >
     <td width="50%">
     <b>EMPRESA</b>
     </td>
     <td>
     <b>VER PAGINA</b>
     </td>
-    
-    
     <td>{{empresa.denominacion}}</td>
     <td>
-    <a routerLink="empresa/{{empresa.id}}" (click)="verEmpresa(empresa.id)">IR</a>
+    <a routerLink="empresa/{{empresa.id}}" (click)= "verEmpresa(empresa.id)">IR</a>
     </td>
     </tr>   
     </table>
